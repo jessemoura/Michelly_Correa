@@ -1,0 +1,5 @@
+BACKUP*/
+test_zip_contents/
+*.zip
+.DS_Store
+Thumbs.db

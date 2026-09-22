@@ -3,15 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Michelly Corrêa - Jornalista, Apresentadora, Mestre de Cerimônias e Comunicadora">
-    <title>Michelly Corrêa | Comunicadora</title>
+    <meta name="description" content="Michelly Correa: Jornalista, Apresentadora e Mestre de Cerimônias em Curitiba. 18 anos de experiência conectando marcas e pessoas. Solicite um orçamento.">
+    <meta name="keywords" content="Michelly Correa, Jornalista, Apresentadora, Mestre de Cerimônias, Comunicação, Eventos Corporativos, Curitiba, Paraná, RPC">
+    <meta name="author" content="Michelly Correa">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.michellycorrea.com/">
     
+    <title>Michelly Correa | Apresentadora e Comunicadora em Curitiba</title>
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" href="img/Monograma.MC.png">
+    
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.michellycorrea.com/">
+    <meta property="og:title" content="Michelly Correa | Apresentadora e Comunicadora em Curitiba">
+    <meta property="og:description" content="Michelly Correa: Jornalista, Apresentadora e Mestre de Cerimônias em Curitiba. 18 anos de experiência conectando marcas e pessoas. Solicite um orçamento.">
+    <meta property="og:image" content="https://www.michellycorrea.com/img/my%202.jpg.jpeg">
+    <meta property="og:image:alt" content="Foto de Michelly Correa">
+    <meta property="og:locale" content="pt_BR">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.michellycorrea.com/">
+    <meta property="twitter:title" content="Michelly Correa | Apresentadora e Comunicadora em Curitiba">
+    <meta property="twitter:description" content="Michelly Correa: Jornalista, Apresentadora e Mestre de Cerimônias em Curitiba. 18 anos de experiência conectando marcas e pessoas. Solicite um orçamento.">
+    <meta property="twitter:image" content="https://www.michellycorrea.com/img/my%202.jpg.jpeg">
+    
+    <!-- Schema.org for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Person",
+      "name": "Michelly Correa",
+      "url": "https://www.michellycorrea.com/",
+      "image": "https://www.michellycorrea.com/img/my%202.jpg.jpeg",
+      "sameAs": [
+        "https://www.instagram.com/mymicorrea/",
+        "https://www.facebook.com/MymiCorrea/",
+        "https://www.youtube.com/@MychelliCorrea"
+      ],
+      "jobTitle": "Jornalista, Apresentadora e Mestre de Cerimônias",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Profissional Independente"
+      }
+    }
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3">
+
+    <!-- Inline CSS for Cookie Banner to prevent caching issues -->
+    <style>
+        .cookie-banner {
+            position: fixed;
+            bottom: -200px;
+            left: 20px;
+            width: calc(100% - 40px);
+            max-width: 350px;
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 8px;
+            color: #ffffff;
+            padding: 20px;
+            z-index: 10000;
+            transition: bottom 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .cookie-banner.show {
+            bottom: 20px;
+        }
+
+        .cookie-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .cookie-content p {
+            font-size: 0.85rem;
+            margin: 0;
+            color: #cccccc;
+            line-height: 1.5;
+        }
+
+        .cookie-content button {
+            width: 100%;
+        }
+    </style>
+
+    <!-- Critical Theme Toggle CSS: prevents cached/global button styles from breaking the control -->
+    <style>
+        #theme-toggle {
+            width: 40px !important;
+            height: 40px !important;
+            min-width: 40px !important;
+            min-height: 40px !important;
+            max-width: 40px !important;
+            max-height: 40px !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            border-radius: 50% !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex: 0 0 40px !important;
+            line-height: 1 !important;
+            appearance: none !important;
+            -webkit-appearance: none !important;
+            overflow: hidden !important;
+            cursor: pointer;
+            background: #fff !important;
+            border: 1px solid rgba(0,0,0,.14) !important;
+            color: #0a0a0a !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,.10);
+        }
+        #theme-toggle svg {
+            width: 20px !important;
+            height: 20px !important;
+            display: block !important;
+            flex: 0 0 20px !important;
+            pointer-events: none !important;
+        }
+        html[data-theme="dark"] #theme-toggle {
+            background: #1a1a1a !important;
+            border-color: #d4af37 !important;
+            color: #d4af37 !important;
+        }
+    </style>
+
+    <!-- Anti-Flash Early Theme Detection Script -->
+    <script>
+        (function() {
+            try {
+                var savedTheme = localStorage.getItem('theme');
+                var theme = savedTheme ? savedTheme : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', theme);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
 </head>
 <body>
 
@@ -19,39 +163,432 @@
     <header class="header">
         <div class="container header-container">
             <div class="logo">
-                <!-- Temporário até termos o SVG -->
-                <h1>MC</h1>
+                <a href="#home">
+                    <img src="img/Monograma.MC.png" alt="Michelly Correa Logo" class="nav-logo">
+                </a>
             </div>
-            <nav class="nav-menu">
+
+            <div class="header-controls">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Ativar modo escuro" type="button">
+                    <svg id="theme-icon" class="theme-icon" aria-hidden="true" viewBox="0 0 24 24"></svg>
+                </button>
+
+                <div class="hamburger" id="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <nav class="nav-menu" id="nav-menu">
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#atuacao">Atuação</a></li>
-                    <li><a href="#cases">Cases</a></li>
-                    <li><a href="#marcas">Marcas</a></li>
-                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#sobre">SOBRE</a></li>
+                    <li><a href="#atuacao">ATUAÇÃO</a></li>
+                    <li><a href="#cases">CASES</a></li>
+                    <li><a href="#marcas">MARCAS</a></li>
+                    <li><a href="#por-ai">POR AÍ</a></li>
+                    <li><a href="#contato">CONTATO</a></li>
+                    <li class="nav-social" style="margin-left: 15px;">
+                        <a href="https://www.instagram.com/mymicorrea/" target="_blank" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                    </li>
+                    <li class="nav-social">
+                        <a href="https://www.facebook.com/MymiCorrea/" target="_blank" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        </a>
+                    </li>
                 </ul>
             </nav>
-            <div class="social-links-header">
-                <a href="https://www.instagram.com/mymicorrea/" target="_blank" rel="noopener">Instagram</a>
-                <a href="https://www.youtube.com/@MychelliCorrea" target="_blank" rel="noopener">YouTube</a>
-            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="container hero-container">
-            <div class="hero-content">
-                <h2>Conectando pessoas, marcas e boas histórias.</h2>
-                <p>Jornalista, apresentadora, atriz e comunicadora com mais de 18 anos de experiência.</p>
-                <a href="#contato" class="btn btn-primary">Solicitar Orçamento</a>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1>MICHELLY CORREA</h1>
+            <p class="subtitle">Jornalista • Apresentadora • Comunicadora</p>
+            <p class="hero-desc">“Comunicação que conecta pessoas, marcas e histórias.”</p>
+        </div>
+        
+        <!-- WhatsApp Floating Button -->
+        <a href="https://wa.me/554199715871?text=Ol%C3%A1%2C%20Michelly!%20Tudo%20bem%3F%20%F0%9F%98%8A%0AVim%20pelo%20seu%20site%20e%20gostaria%20de%20falar%20com%20voc%C3%AA%20sobre%20uma%20poss%C3%ADvel%20contrata%C3%A7%C3%A3o.%20Podemos%20conversar%3F" class="whatsapp-float" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.878-.788-1.47-1.761-1.643-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+        </a>
+    </section>
+
+    <!-- Info Bar -->
+    <div class="info-bar">
+        <div class="container info-bar-content">
+            <span>◆ 18+ ANOS DE COMUNICAÇÃO</span>
+            <span>◆ 110 MIL NO INSTAGRAM</span>
+            <span>◆ +160 MIL NO FACEBOOK</span>
+            <span>◆ ATUAÇÃO EM TODO O BRASIL</span>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="sobre" class="about-section">
+        <div class="container about-container">
+            <div class="about-text">
+                <p class="section-subtitle">SOBRE MICHELLY CORREA</p>
+                <h2 class="section-title">Credibilidade e Conexão</h2>
+                <p>Sou jornalista, apresentadora, atriz e comunicadora, com mais de 18 anos de experiência em comunicação. Por mais de uma década, atuei como apresentadora na RPC TV (afiliada Globo no Paraná) no programa Plug — trajetória que fortaleceu minha credibilidade e minha capacidade de dialogar com diferentes públicos.</p>
+                <p>Ao longo da minha trajetória, construí uma comunicação leve, espontânea e confiável, que me permite transitar com naturalidade entre campanhas publicitárias, eventos corporativos, produção de conteúdo e apresentações.</p>
+                <p>Tenho formação em Jornalismo, Rádio e TV e Artes Cênicas, e sigo ampliando meu repertório por meio dos estudos em Programação Neurolinguística (PNL) e Coaching. A PNL contribui para a construção de narrativas mais envolventes, roteiros estratégicos e conteúdos que despertam conexão genuína com o público.</p>
+                <p>Hoje atuo como apresentadora, mestre de cerimônias, garota-propaganda e criadora de conteúdo, colocando minha experiência em comunicação a serviço de marcas que desejam se comunicar de forma humana, autêntica e memorável.</p>
+            </div>
+            <div class="about-image-wrapper">
+                <img src="img/my 2.jpg.jpeg" alt="Michelly Correa - Apresentadora e Jornalista em Curitiba" class="about-img">
             </div>
         </div>
     </section>
 
-    <!-- Main Content Here (to be expanded) -->
+    <!-- Services Section -->
+    <section id="atuacao" class="services-section">
+        <div class="container">
+            <div class="services-header">
+                <p class="section-subtitle">EXPERTISE</p>
+                <h2 class="section-title">Áreas de Atuação</h2>
+            </div>
+            <div class="services-grid">
+                <!-- Card 1 -->
+                <div class="service-card">
+                    <h3 class="service-title">Mestre de Cerimônias</h3>
+                    <p class="service-desc">Apresentação de eventos corporativos, convenções, premiações, lançamentos de produtos, inaugurações e ações promocionais, conduzindo cada evento com leveza, dinamismo e profissionalismo.</p>
+                    <a href="https://wa.me/554199715871?text=Ol%C3%A1%2C%20Michelly!%20Tudo%20bem%3F%20%F0%9F%98%8A%0AVim%20pelo%20seu%20site%20e%20gostaria%20de%20falar%20com%20voc%C3%AA%20sobre%20uma%20poss%C3%ADvel%20contrata%C3%A7%C3%A3o.%20Podemos%20conversar%3F" class="service-link">SOLICITAR ORÇAMENTO →</a>
+                </div>
+                <!-- Card 2 -->
+                <div class="service-card">
+                    <h3 class="service-title">Apresentação</h3>
+                    <p class="service-desc">Apresentação de eventos presenciais e online, vídeos institucionais, programas especiais, transmissões ao vivo e projetos audiovisuais para empresas.</p>
+                    <a href="https://wa.me/554199715871?text=Ol%C3%A1%2C%20Michelly!%20Tudo%20bem%3F%20%F0%9F%98%8A%0AVim%20pelo%20seu%20site%20e%20gostaria%20de%20falar%20com%20voc%C3%AA%20sobre%20uma%20poss%C3%ADvel%20contrata%C3%A7%C3%A3o.%20Podemos%20conversar%3F" class="service-link">SOLICITAR ORÇAMENTO →</a>
+                </div>
+                <!-- Card 3 -->
+                <div class="service-card">
+                    <h3 class="service-title">Campanhas</h3>
+                    <p class="service-desc">Participação como garota-propaganda, embaixadora de marca e rosto de campanhas publicitárias para TV, internet e redes sociais, criando conexões autênticas.</p>
+                    <a href="https://wa.me/554199715871?text=Ol%C3%A1%2C%20Michelly!%20Tudo%20bem%3F%20%F0%9F%98%8A%0AVim%20pelo%20seu%20site%20e%20gostaria%20de%20falar%20com%20voc%C3%AA%20sobre%20uma%20poss%C3%ADvel%20contrata%C3%A7%C3%A3o.%20Podemos%20conversar%3F" class="service-link">SOLICITAR ORÇAMENTO →</a>
+                </div>
+                <!-- Card 4 -->
+                <div class="service-card">
+                    <h3 class="service-title">Conteúdo para Marcas</h3>
+                    <p class="service-desc">Produção de conteúdos patrocinados para redes sociais, incluindo vídeos, Reels, fotos e storytelling, desenvolvidos de forma estratégica.</p>
+                    <a href="https://wa.me/554199715871?text=Ol%C3%A1%2C%20Michelly!%20Tudo%20bem%3F%20%F0%9F%98%8A%0AVim%20pelo%20seu%20site%20e%20gostaria%20de%20falar%20com%20voc%C3%AA%20sobre%20uma%20poss%C3%ADvel%20contrata%C3%A7%C3%A3o.%20Podemos%20conversar%3F" class="service-link">SOLICITAR ORÇAMENTO →</a>
+                </div>
+                <!-- Card 5 -->
+                <div class="service-card">
+                    <h3 class="service-title">Comerciais</h3>
+                    <p class="service-desc">Participação em filmes publicitários, campanhas institucionais, lançamentos de produtos e produções audiovisuais.</p>
+                    <a href="https://wa.me/554199715871?text=Ol%C3%A1%2C%20Michelly!%20Tudo%20bem%3F%20%F0%9F%98%8A%0AVim%20pelo%20seu%20site%20e%20gostaria%20de%20falar%20com%20voc%C3%AA%20sobre%20uma%20poss%C3%ADvel%20contrata%C3%A7%C3%A3o.%20Podemos%20conversar%3F" class="service-link">SOLICITAR ORÇAMENTO →</a>
+                </div>
+                <!-- Card 6 -->
+                <div class="service-card">
+                    <h3 class="service-title">Palestras</h3>
+                    <p class="service-desc">Palestras sobre comunicação, expressão diante das câmeras, construção de narrativas, presença em vídeo e conexão com o público.</p>
+                    <a href="https://wa.me/554199715871?text=Ol%C3%A1%2C%20Michelly!%20Tudo%20bem%3F%20%F0%9F%98%8A%0AVim%20pelo%20seu%20site%20e%20gostaria%20de%20falar%20com%20voc%C3%AA%20sobre%20uma%20poss%C3%ADvel%20contrata%C3%A7%C3%A3o.%20Podemos%20conversar%3F" class="service-link">SOLICITAR ORÇAMENTO →</a>
+                </div>
+                <!-- Card 7 -->
+                <div class="service-card">
+                    <h3 class="service-title">Publicidade e Parcerias</h3>
+                    <p class="service-desc">Ações comerciais personalizadas, parcerias com marcas e representação publicitária com foco em engajamento, autoridade e conversão.</p>
+                    <a href="https://wa.me/554199715871?text=Ol%C3%A1%2C%20Michelly!%20Tudo%20bem%3F%20%F0%9F%98%8A%0AVim%20pelo%20seu%20site%20e%20gostaria%20de%20falar%20com%20voc%C3%AA%20sobre%20uma%20poss%C3%ADvel%20contrata%C3%A7%C3%A3o.%20Podemos%20conversar%3F" class="service-link">SOLICITAR ORÇAMENTO →</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <script src="script.js"></script>
+    <!-- Cases Section -->
+    <section id="cases" class="cases-section">
+        <div class="container">
+            <div class="services-header">
+                <p class="section-subtitle">DESTAQUES</p>
+                <h2 class="section-title">Cases de Sucesso</h2>
+            </div>
+            
+            <div class="cases-grid">
+                <div class="case-card">
+                    <div class="case-img-wrapper">
+                        <img src="img/campanha publicitaria SuperDia 3.jpeg" alt="Campanha publicitária para rede Super Dia com Michelly Correa" class="case-img">
+                    </div>
+                    <div class="case-content">
+                        <h3>Super Dia</h3>
+                        <p>Garota-propaganda da rede atacadista há dois anos, participando de campanhas publicitárias e ações de comunicação da marca.</p>
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-img-wrapper">
+                        <img src="img/o boticario.jpeg" alt="Evento corporativo para O Boticário com Mestre de Cerimônias Michelly Correa" class="case-img" style="object-fit: contain; padding: 20px;">
+                    </div>
+                    <div class="case-content">
+                        <h3>O Boticário</h3>
+                        <p>Mestre de cerimônias em eventos corporativos, conduzindo apresentações institucionais e experiências para convidados.</p>
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-img-wrapper">
+                        <img src="img/girando sol.png" alt="Campanha publicitária para Girando Sol" class="case-img" style="object-fit: contain; padding: 20px;">
+                    </div>
+                    <div class="case-content">
+                        <h3>Girando Sol</h3>
+                        <p>Garota-propaganda de campanhas publicitárias realizadas em 2025.</p>
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-img-wrapper">
+                        <img src="img/curitiba logo.png" alt="Apresentação de conteúdo editorial para Prefeitura de Curitiba" class="case-img" style="object-fit: contain; padding: 20px;">
+                    </div>
+                    <div class="case-content">
+                        <h3>Prefeitura de Curitiba</h3>
+                        <p>Apresentação de conteúdos editoriais comerciais para televisão, aproximando serviços e iniciativas públicas da população.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Carousel Section -->
+    <section id="marcas" class="brands-section">
+        <div class="container">
+            <p class="section-subtitle">PORTFÓLIO</p>
+            <h2 class="section-title">Marcas que Confiam</h2>
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <!-- Logos -->
+                    <img src="img/1200px-Rappi_logo.png" alt="Rappi" class="logo-item">
+                    <img src="img/Azul-Airlines-logo.png" alt="Azul Airlines" class="logo-item">
+                    <img src="img/o boticario.jpeg" alt="O Boticário" class="logo-item">
+                    <img src="img/curitiba logo.png" alt="Prefeitura de Curitiba" class="logo-item">
+                    <img src="img/girando sol.png" alt="Girando Sol" class="logo-item">
+                    <img src="img/sebrae logo (1).png" alt="Sebrae" class="logo-item">
+                    <img src="img/columbia.jpg.jpeg" alt="Columbia" class="logo-item">
+                    <img src="img/sacre (1).jpg.jpeg" alt="Sacre" class="logo-item">
+                    <img src="img/S.Muffato.png" alt="Super Muffato" class="logo-item">
+                    <img src="img/superdia_atacadao.jpeg" alt="Superdia" class="logo-item">
+                    
+                    <!-- Duplicados -->
+                    <img src="img/1200px-Rappi_logo.png" alt="Rappi" class="logo-item">
+                    <img src="img/Azul-Airlines-logo.png" alt="Azul Airlines" class="logo-item">
+                    <img src="img/o boticario.jpeg" alt="O Boticário" class="logo-item">
+                    <img src="img/curitiba logo.png" alt="Prefeitura de Curitiba" class="logo-item">
+                    <img src="img/girando sol.png" alt="Girando Sol" class="logo-item">
+                    <img src="img/sebrae logo (1).png" alt="Sebrae" class="logo-item">
+                    <img src="img/columbia.jpg.jpeg" alt="Columbia" class="logo-item">
+                    <img src="img/sacre (1).jpg.jpeg" alt="Sacre" class="logo-item">
+                    <img src="img/S.Muffato.png" alt="Super Muffato" class="logo-item">
+                    <img src="img/superdia_atacadao.jpeg" alt="Superdia" class="logo-item">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section id="video" class="video-section">
+        <div class="container">
+            <p class="section-subtitle">TRAJETÓRIA NA TV</p>
+            <h2 class="section-title">Presença Marcante na Televisão</h2>
+            <div class="video-container">
+                <a href="https://globoplay.globo.com/plug/t/PyKpbzQznQ/" target="_blank" class="video-link" aria-label="Assistir no Globoplay">
+                    <img src="img/mi programa.jpeg" alt="Programa Plug da RPC TV no Globoplay com Michelly Correa" class="video-thumbnail">
+                    <div class="play-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                </a>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://globoplay.globo.com/plug/t/PyKpbzQznQ/" target="_blank" class="service-link">ASSISTIR NO GLOBOPLAY →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Por Aí (Gallery) Section -->
+    <section id="por-ai" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">Por Aí...</h2>
+            
+            <div class="gallery-grid">
+                <img src="img/lifestyle%20%20pet.jpeg" alt="Michelly Correa com seu pet" class="gallery-item">
+                <img src="img/lifestyle%20cidade.jpeg" alt="Michelly Correa em momento lifestyle na cidade" class="gallery-item">
+                <img src="img/lifestyle%20sapatos.jpeg" alt="Estilo e moda: detalhes de sapatos de Michelly Correa" class="gallery-item">
+                <img src="img/10.jpg.jpeg" alt="Michelly Correa em ensaio fotográfico" class="gallery-item">
+                <img src="img/Bastidores%20TV%202.jpeg" alt="Bastidores de gravação na TV com Michelly Correa" class="gallery-item">
+                <img src="img/bastidores%20tv%204.jpeg" alt="Michelly Correa nos bastidores da televisão" class="gallery-item">
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <p class="section-subtitle">DÚVIDAS</p>
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            
+            <div class="faq-accordion">
+                <details class="faq-item">
+                    <summary>Você atende apenas Curitiba?</summary>
+                    <p>Não. Estou disponível para trabalhos em todo o Brasil.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Quais tipos de eventos você apresenta?</summary>
+                    <p>Convenções, premiações, congressos, lançamentos, eventos corporativos, inaugurações e ações promocionais.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Como funciona uma parceria publicitária?</summary>
+                    <p>Cada campanha é desenvolvida de forma personalizada, respeitando os objetivos da marca e o perfil do público.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Você grava comerciais e vídeos institucionais?</summary>
+                    <p>Sim. Participo de campanhas publicitárias, filmes comerciais, vídeos institucionais e produções para empresas.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Você produz conteúdo para redes sociais?</summary>
+                    <p>Sim. Desenvolvo conteúdos patrocinados em diferentes formatos, sempre alinhados ao posicionamento e aos objetivos de cada marca.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>É possível contratar apenas para um evento ou campanha específica?</summary>
+                    <p>Sim. Cada projeto é orçado individualmente, de acordo com o formato, duração e necessidades da contratação.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Como solicitar um orçamento?</summary>
+                    <p>Por meio do WhatsApp ou e-mail comercial listados abaixo.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contato -->
+    <footer id="contato" class="footer">
+        <div class="container footer-container">
+            <div class="footer-info">
+                <img src="img/Monograma.MC.png" alt="Logo" class="footer-logo">
+                <div class="social-links">
+                    <a href="https://www.instagram.com/mymicorrea/" target="_blank" aria-label="Instagram" class="icon-instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <a href="https://www.facebook.com/MymiCorrea/" target="_blank" aria-label="Facebook" class="icon-facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="https://www.youtube.com/@MychelliCorrea" target="_blank" aria-label="YouTube" class="icon-youtube">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <h3>Vamos trabalhar juntos?</h3>
+                <a href="https://wa.me/554199715871?text=Ol%C3%A1%2C%20Michelly!%20Tudo%20bem%3F%20%F0%9F%98%8A%0AVim%20pelo%20seu%20site%20e%20gostaria%20de%20falar%20com%20voc%C3%AA%20sobre%20uma%20poss%C3%ADvel%20contrata%C3%A7%C3%A3o.%20Podemos%20conversar%3F" class="btn-primary" target="_blank">FALAR NO WHATSAPP</a>
+                <a href="mailto:michellycorrea@yahoo.com.br?subject=Contato%20pelo%20Site&body=Ol%C3%A1%2C%20Michelly!%20Tudo%20bem%3F%20%F0%9F%98%8A%0A%0AVim%20pelo%20seu%20site%20e%20gostaria%20de%20falar%20com%20voc%C3%AA%20sobre%20uma%20poss%C3%ADvel%20contrata%C3%A7%C3%A3o.%20Podemos%20conversar%3F" class="footer-email">michellycorrea@yahoo.com.br</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Michelly Correa. Todos os direitos reservados.</p>
+            <p><a href="/politica-de-privacidade/" class="footer-legal-link">Política de Privacidade</a></p>
+            <p class="developer-credits">Developed by <a href="https://www.conexus.press/" target="_blank" rel="noopener noreferrer"><img src="img/conexus-logo.png" alt="CONEXUS" class="conexus-logo" height="20" style="height: 20px; width: auto; max-width: 90px; vertical-align: middle; display: inline-block;"></a></p>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="gallery-lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <!-- Cookie Banner (LGPD) -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <p>Usamos cookies para garantir que você tenha a melhor experiência em nosso site. Ao continuar navegando, você concorda com a nossa política.</p>
+            <button id="accept-cookies" class="btn-primary" style="padding: 10px 25px;">ACEITAR</button>
+        </div>
+    </div>
+
+    <script>
+        // Cookie Logic
+        const cookieBanner = document.getElementById('cookie-banner');
+        const acceptCookiesBtn = document.getElementById('accept-cookies');
+
+        if (!localStorage.getItem('cookiesAccepted')) {
+            setTimeout(() => {
+                cookieBanner.classList.add('show');
+            }, 1000); // Mostra após 1 segundo
+        }
+
+        acceptCookiesBtn.addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'true');
+            cookieBanner.classList.remove('show');
+        });
+
+        // Lightbox Logic
+        const lightbox = document.getElementById("gallery-lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const galleryItems = document.querySelectorAll(".gallery-item");
+
+        galleryItems.forEach(item => {
+            item.style.cursor = "pointer"; // Add pointer to images
+            item.addEventListener("click", function() {
+                lightbox.style.display = "flex";
+                lightboxImg.src = this.src;
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.style.display = "none";
+        }
+
+        // Mobile Menu Logic
+        const hamburger = document.getElementById('hamburger-menu');
+        const navMenuObj = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-menu a');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenuObj.classList.toggle('active');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenuObj.classList.remove('active');
+            });
+        });
+
+        // Dark / Light Theme Toggle Logic — one button, one SVG at a time
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        const moonSvg = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>';
+        const sunSvg = '<circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>';
+
+        function syncThemeButton() {
+            if (!themeToggleBtn || !themeIcon) return;
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            themeIcon.innerHTML = isDark ? sunSvg : moonSvg;
+            themeToggleBtn.setAttribute('aria-label', isDark ? 'Ativar modo claro' : 'Ativar modo escuro');
+        }
+
+        syncThemeButton();
+
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', function () {
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                const nextTheme = isDark ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', nextTheme);
+                try { localStorage.setItem('theme', nextTheme); } catch (err) {}
+                syncThemeButton();
+            });
+        }
+    </script>
 </body>
 </html>
+
+
+

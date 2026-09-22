@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, follow">
+    <title>Página Não Encontrada | Michelly Correa</title>
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" href="img/Monograma.MC.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .error-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: var(--bg-secondary);
+            padding-top: 90px; /* Offset for the fixed header */
+            transition: background-color 0.4s ease;
+        }
+        .error-content h1 {
+            font-family: var(--font-heading);
+            font-size: 8rem;
+            color: var(--dourado-champagne);
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+        .error-content h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            transition: color 0.4s ease;
+        }
+        .error-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            transition: color 0.4s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .error-content h1 { font-size: 5rem; }
+            .error-content h2 { font-size: 1.8rem; }
+            .error-content p { font-size: 1rem; padding: 0 20px; }
+        }
+    </style>
+    <!-- Anti-Flash Early Theme Detection Script -->
+    <script>
+        (function() {
+            try {
+                var savedTheme = localStorage.getItem('theme');
+                var theme = savedTheme ? savedTheme : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', theme);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="/">
+                    <img src="img/Monograma.MC.png" alt="Michelly Correa Logo" class="nav-logo">
+                </a>
+            </div>
+
+            <div class="header-controls">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Ativar modo escuro" type="button">
+                    <!-- Moon Icon (Light Mode state -> click to turn lights OFF / dark) -->
+                    <svg class="theme-icon moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <!-- Sun Icon (Dark Mode state -> click to turn lights ON / light) -->
+                    <svg class="theme-icon sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+
+                <div class="hamburger" id="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <nav class="nav-menu" id="nav-menu">
+                <ul>
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="/#sobre">SOBRE</a></li>
+                    <li><a href="/#atuacao">ATUAÇÃO</a></li>
+                    <li><a href="/#cases">CASES</a></li>
+                    <li><a href="/#contato">CONTATO</a></li>
+                    <li class="nav-social" style="margin-left: 15px;">
+                        <a href="https://www.instagram.com/mymicorrea/" target="_blank" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 404 Section -->
+    <section class="error-section">
+        <div class="container error-content">
+            <h1>404</h1>
+            <h2>Página não encontrada</h2>
+            <p>Desculpe, não conseguimos encontrar a página que você está procurando. Ela pode ter sido removida, renomeada ou está temporariamente indisponível.</p>
+            <a href="/" class="btn-primary">VOLTAR AO INÍCIO</a>
+        </div>
+    </section>
+
+    <!-- Footer / Contato -->
+    <footer id="contato" class="footer">
+        <div class="container footer-container">
+            <div class="footer-info">
+                <img src="img/Monograma.MC.png" alt="Logo" class="footer-logo">
+                <div class="social-links">
+                    <a href="https://www.instagram.com/mymicorrea/" target="_blank" aria-label="Instagram" class="icon-instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <a href="https://www.facebook.com/MymiCorrea/" target="_blank" aria-label="Facebook" class="icon-facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="https://www.youtube.com/@MychelliCorrea" target="_blank" aria-label="YouTube" class="icon-youtube">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <h3>Vamos trabalhar juntos?</h3>
+                <a href="https://wa.me/554199715871?text=Ol%C3%A1%2C%20Michelly!%20Tudo%20bem%3F%20%F0%9F%98%8A%0AVim%20pelo%20seu%20site%20e%20gostaria%20de%20falar%20com%20voc%C3%AA%20sobre%20uma%20poss%C3%ADvel%20contrata%C3%A7%C3%A3o.%20Podemos%20conversar%3F" class="btn-primary" target="_blank">FALAR NO WHATSAPP</a>
+                <a href="mailto:michellycorrea@yahoo.com.br?subject=Contato%20pelo%20Site&body=Ol%C3%A1%2C%20Michelly!%20Tudo%20bem%3F%20%F0%9F%98%8A%0A%0AVim%20pelo%20seu%20site%20e%20gostaria%20de%20falar%20com%20voc%C3%AA%20sobre%20uma%20poss%C3%ADvel%20contrata%C3%A7%C3%A3o.%20Podemos%20conversar%3F" class="footer-email">michellycorrea@yahoo.com.br</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Michelly Correa. Todos os direitos reservados.</p>
+            <p><a href="/politica-de-privacidade/" class="footer-legal-link">Política de Privacidade</a></p>
+            <p class="developer-credits">Developed by <a href="https://www.conexus.press/" target="_blank" rel="noopener noreferrer"><img src="img/conexus-logo.png" alt="CONEXUS" class="conexus-logo" height="20" style="height: 20px; width: auto; max-width: 90px; vertical-align: middle; display: inline-block;"></a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Logic
+        const hamburger = document.getElementById('hamburger-menu');
+        const navMenuObj = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-menu a');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenuObj.classList.toggle('active');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenuObj.classList.remove('active');
+            });
+        });
+
+        // Dark / Light Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                const nextTheme = isDark ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', nextTheme);
+                try {
+                    localStorage.setItem('theme', nextTheme);
+                } catch (err) {}
+            });
+        }
+    </script>
+</body>
+</html>
