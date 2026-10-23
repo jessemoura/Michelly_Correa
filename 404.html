@@ -401,6 +401,32 @@
             });
         });
 
+        // 6. Evento instagram_click (Todos os links para o Instagram)
+        document.querySelectorAll('a[href*="instagram.com"]').forEach(link => {
+            link.addEventListener('click', function() {
+                const placement = (this.closest('header') || this.closest('.nav-menu')) ? 'header' : (this.closest('footer') || this.closest('.footer')) ? 'footer' : 'content';
+                sendAnalyticsEvent('instagram_click', {
+                    'social_network': 'instagram',
+                    'placement': placement,
+                    'page_path': window.location.pathname,
+                    'page_language': 'pt-BR'
+                });
+            });
+        });
+
+        // 7. Evento facebook_click (Todos os links para o Facebook)
+        document.querySelectorAll('a[href*="facebook.com"]').forEach(link => {
+            link.addEventListener('click', function() {
+                const placement = (this.closest('header') || this.closest('.nav-menu')) ? 'header' : (this.closest('footer') || this.closest('.footer')) ? 'footer' : 'content';
+                sendAnalyticsEvent('facebook_click', {
+                    'social_network': 'facebook',
+                    'placement': placement,
+                    'page_path': window.location.pathname,
+                    'page_language': 'pt-BR'
+                });
+            });
+        });
+
         // Lightbox Logic com acessibilidade por teclado (ESC e Enter)
         const lightbox = document.getElementById("gallery-lightbox");
         const lightboxImg = document.getElementById("lightbox-img");
