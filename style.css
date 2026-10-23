@@ -5,10 +5,34 @@
     box-sizing: border-box;
 }
 
+/* Skip Link para acessibilidade por teclado */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 20px;
+    background: var(--dourado-champagne);
+    color: var(--preto-elegante);
+    padding: 12px 22px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    z-index: 100000;
+    border-radius: 4px;
+    transition: top 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.skip-link:focus {
+    top: 20px;
+    outline: 3px solid #FFFFFF;
+}
+
 :root {
     /* Color Palette - Michelly Correa Brand */
     --preto-elegante: #0A0A0A;
     --dourado-champagne: #D4AF37;
+    --dourado-text: #8F7118; /* Alto contraste para texto no Modo Claro (4.75:1 WCAG AA) */
     --nude-sofisticado: #EAD9C6;
     --off-white: #F8F5EF;
     --pure-white: #FFFFFF;
@@ -46,6 +70,7 @@
 
 [data-theme="dark"] {
     /* Semantic Theme Variables - Dark Mode */
+    --dourado-text: #D4AF37; /* Dourado brilhante sobre fundo escuro (8.5:1 WCAG AA) */
     --bg-primary: #0C0C0C;
     --bg-secondary: #141414;
     --bg-card: #1A1A1A;
@@ -146,7 +171,7 @@ body {
     font-size: 0.8rem;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--dourado-champagne);
+    color: var(--dourado-text);
     margin-bottom: 15px;
 }
 
@@ -207,6 +232,15 @@ body {
     gap: 6px;
     cursor: pointer;
     z-index: 1001;
+    background: transparent;
+    border: none;
+    padding: 8px 4px;
+}
+
+.hamburger:focus-visible {
+    outline: 2px solid var(--dourado-champagne);
+    outline-offset: 4px;
+    border-radius: 4px;
 }
 
 .hamburger span {
@@ -290,7 +324,7 @@ html[data-theme="dark"] .theme-toggle {
     height: 100vh;
     display: flex;
     align-items: center;
-    background: url('img/lifestyle parque.jpeg') center top/cover no-repeat;
+    background: url('img/lifestyle-parque.webp') center top/cover no-repeat, url('img/lifestyle parque.jpeg') center top/cover no-repeat;
     padding-top: 80px;
 }
 
@@ -490,7 +524,7 @@ html[data-theme="dark"] .theme-toggle {
     font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 1.5px;
-    color: var(--dourado-champagne);
+    color: var(--dourado-text);
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -712,7 +746,7 @@ html[data-theme="dark"] .theme-toggle {
     position: absolute;
     right: 30px;
     font-size: 1.5rem;
-    color: var(--dourado-champagne);
+    color: var(--dourado-text);
 }
 
 .faq-item[open] summary::after {
@@ -934,7 +968,7 @@ html[data-theme="dark"] .theme-toggle {
 
 .policy-last-updated {
     font-size: 0.9rem;
-    color: var(--dourado-champagne);
+    color: var(--dourado-text);
     margin-bottom: 40px;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -975,7 +1009,7 @@ html[data-theme="dark"] .theme-toggle {
 }
 
 .policy-block a {
-    color: var(--dourado-champagne);
+    color: var(--dourado-text);
     text-decoration: underline;
     transition: color 0.3s ease;
 }
@@ -1085,6 +1119,9 @@ html[data-theme="dark"] .theme-toggle {
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
+    background: transparent;
+    border: none;
+    line-height: 1;
 }
 
 .lightbox-close:hover,
@@ -1092,6 +1129,12 @@ html[data-theme="dark"] .theme-toggle {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
+}
+
+.lightbox-close:focus-visible {
+    outline: 2px solid var(--dourado-champagne);
+    outline-offset: 4px;
+    border-radius: 4px;
 }
 
 @keyframes zoomIn {

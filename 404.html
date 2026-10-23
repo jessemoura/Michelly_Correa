@@ -6,18 +6,58 @@
     <meta name="robots" content="noindex, follow">
     <title>Página Não Encontrada | Michelly Correa</title>
     
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="icon" type="image/png" href="img/Monograma.MC.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=4">
+
+    <!-- Critical Theme Toggle CSS -->
+    <style>
+        #theme-toggle {
+            width: 40px !important;
+            height: 40px !important;
+            min-width: 40px !important;
+            min-height: 40px !important;
+            max-width: 40px !important;
+            max-height: 40px !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            border-radius: 50% !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex: 0 0 40px !important;
+            line-height: 1 !important;
+            appearance: none !important;
+            -webkit-appearance: none !important;
+            overflow: hidden !important;
+            cursor: pointer;
+            background: #fff !important;
+            border: 1px solid rgba(0,0,0,.14) !important;
+            color: #0a0a0a !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,.10);
+        }
+        #theme-toggle svg {
+            width: 20px !important;
+            height: 20px !important;
+            display: block !important;
+            flex: 0 0 20px !important;
+            pointer-events: none !important;
+        }
+        html[data-theme="dark"] #theme-toggle {
+            background: #1a1a1a !important;
+            border-color: #d4af37 !important;
+            color: #d4af37 !important;
+        }
+    </style>
     
     <style>
         .error-section {
@@ -62,19 +102,115 @@
         }
     </style>
     <!-- Anti-Flash Early Theme Detection Script -->
-    <script>
-        (function() {
-            try {
-                var savedTheme = localStorage.getItem('theme');
-                var theme = savedTheme ? savedTheme : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-                document.documentElement.setAttribute('data-theme', theme);
-            } catch(e) {
-                document.documentElement.setAttribute('data-theme', 'light');
+        <script>
+        // Cookie Logic (LGPD)
+        const cookieBanner = document.getElementById('cookie-banner');
+        const acceptCookiesBtn = document.getElementById('accept-cookies');
+
+        if (cookieBanner && !localStorage.getItem('cookiesAccepted')) {
+            setTimeout(() => {
+                cookieBanner.classList.add('show');
+            }, 1000);
+        }
+
+        if (acceptCookiesBtn) {
+            acceptCookiesBtn.addEventListener('click', () => {
+                localStorage.setItem('cookiesAccepted', 'true');
+                if (cookieBanner) cookieBanner.classList.remove('show');
+            });
+        }
+
+        // Lightbox Logic com acessibilidade por teclado (ESC)
+        const lightbox = document.getElementById("gallery-lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const galleryItems = document.querySelectorAll(".gallery-item");
+
+        galleryItems.forEach(item => {
+            item.style.cursor = "pointer";
+            item.setAttribute("tabindex", "0");
+            item.setAttribute("role", "button");
+            item.setAttribute("aria-label", "Ampliar foto da galeria");
+            
+            function openPhoto() {
+                if (lightbox && lightboxImg) {
+                    lightbox.style.display = "flex";
+                    // Se estiver em picture, pega o source ou o src do img
+                    lightboxImg.src = item.currentSrc || item.src;
+                    const closeBtn = document.getElementById("lightbox-close");
+                    if (closeBtn) closeBtn.focus();
+                }
             }
-        })();
+            
+            item.addEventListener("click", openPhoto);
+            item.addEventListener("keydown", function(e) {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    openPhoto();
+                }
+            });
+        });
+
+        function closeLightbox() {
+            if (lightbox) lightbox.style.display = "none";
+        }
+
+        // Fechar lightbox via tecla ESC
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "Escape" && lightbox && lightbox.style.display === "flex") {
+                closeLightbox();
+            }
+        });
+
+        // Mobile Menu Logic com aria-expanded
+        const hamburger = document.getElementById('hamburger-menu');
+        const navMenuObj = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-menu a');
+
+        if (hamburger && navMenuObj) {
+            hamburger.addEventListener('click', () => {
+                const isActive = hamburger.classList.toggle('active');
+                navMenuObj.classList.toggle('active');
+                hamburger.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenuObj.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+
+        // Dark / Light Theme Toggle Logic — one button, one SVG at a time
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        const moonSvg = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>';
+        const sunSvg = '<circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>';
+
+        function syncThemeButton() {
+            if (!themeToggleBtn || !themeIcon) return;
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            themeIcon.innerHTML = isDark ? sunSvg : moonSvg;
+            themeToggleBtn.setAttribute('aria-label', isDark ? 'Ativar modo claro' : 'Ativar modo escuro');
+        }
+
+        syncThemeButton();
+
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', function () {
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                const nextTheme = isDark ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', nextTheme);
+                try { localStorage.setItem('theme', nextTheme); } catch (err) {}
+                syncThemeButton();
+            });
+        }
     </script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
 
     <!-- Header / Navigation -->
     <header class="header">
@@ -87,32 +223,16 @@
 
             <div class="header-controls">
                 <button id="theme-toggle" class="theme-toggle" aria-label="Ativar modo escuro" type="button">
-                    <!-- Moon Icon (Light Mode state -> click to turn lights OFF / dark) -->
-                    <svg class="theme-icon moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <!-- Sun Icon (Dark Mode state -> click to turn lights ON / light) -->
-                    <svg class="theme-icon sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
+                    <svg id="theme-icon" class="theme-icon" aria-hidden="true" viewBox="0 0 24 24"></svg>
                 </button>
 
-                <div class="hamburger" id="hamburger-menu">
+                <button class="hamburger" id="hamburger-menu" type="button" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="nav-menu">
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </button>
             </div>
-
-            <nav class="nav-menu" id="nav-menu">
+        <nav<nav class="nav-menu" id="nav-menu">
                 <ul>
                     <li><a href="/">HOME</a></li>
                     <li><a href="/#sobre">SOBRE</a></li>
@@ -120,7 +240,7 @@
                     <li><a href="/#cases">CASES</a></li>
                     <li><a href="/#contato">CONTATO</a></li>
                     <li class="nav-social" style="margin-left: 15px;">
-                        <a href="https://www.instagram.com/mymicorrea/" target="_blank" aria-label="Instagram">
+                        <a href="https://www.instagram.com/mymicorrea/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                         </a>
                     </li>
@@ -129,7 +249,8 @@
         </div>
     </header>
 
-    <!-- 404 Section -->
+    <!-- Main Content Landmark -->
+    <main id="main-content">
     <section class="error-section">
         <div class="container error-content">
             <h1>404</h1>
@@ -138,34 +259,41 @@
             <a href="/" class="btn-primary">VOLTAR AO INÍCIO</a>
         </div>
     </section>
+    </main><!-- /#main-content -->
 
     <!-- Footer / Contato -->
     <footer id="contato" class="footer">
         <div class="container footer-container">
             <div class="footer-info">
-                <img src="img/Monograma.MC.png" alt="Logo" class="footer-logo">
+                <picture>
+                    <source srcset="img/monograma-mc.webp" type="image/webp">
+                    <img src="img/Monograma.MC.png" alt="Monograma oficial Michelly Correa" class="footer-logo" width="110" height="110" loading="lazy" decoding="async">
+                </picture>
                 <div class="social-links">
-                    <a href="https://www.instagram.com/mymicorrea/" target="_blank" aria-label="Instagram" class="icon-instagram">
+                    <a href="https://www.instagram.com/mymicorrea/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="icon-instagram">
                         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     </a>
-                    <a href="https://www.facebook.com/MymiCorrea/" target="_blank" aria-label="Facebook" class="icon-facebook">
+                    <a href="https://www.facebook.com/MymiCorrea/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="icon-facebook">
                         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                     </a>
-                    <a href="https://www.youtube.com/@MychelliCorrea" target="_blank" aria-label="YouTube" class="icon-youtube">
+                    <a href="https://www.youtube.com/@MychelliCorrea" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="icon-youtube">
                         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
                     </a>
                 </div>
             </div>
             <div class="footer-contact">
                 <h3>Vamos trabalhar juntos?</h3>
-                <a href="https://wa.me/554199715871?text=Ol%C3%A1%2C%20Michelly!%20Tudo%20bem%3F%20%F0%9F%98%8A%0AVim%20pelo%20seu%20site%20e%20gostaria%20de%20falar%20com%20voc%C3%AA%20sobre%20uma%20poss%C3%ADvel%20contrata%C3%A7%C3%A3o.%20Podemos%20conversar%3F" class="btn-primary" target="_blank">FALAR NO WHATSAPP</a>
+                <a href="https://wa.me/554199715871?text=Ol%C3%A1%2C%20Michelly!%20Tudo%20bem%3F%20%F0%9F%98%8A%0AVim%20pelo%20seu%20site%20e%20gostaria%20de%20falar%20com%20voc%C3%AA%20sobre%20uma%20poss%C3%ADvel%20contrata%C3%A7%C3%A3o.%20Podemos%20conversar%3F" class="btn-primary" target="_blank" rel="noopener noreferrer">FALAR NO WHATSAPP</a>
                 <a href="mailto:michellycorrea@yahoo.com.br?subject=Contato%20pelo%20Site&body=Ol%C3%A1%2C%20Michelly!%20Tudo%20bem%3F%20%F0%9F%98%8A%0A%0AVim%20pelo%20seu%20site%20e%20gostaria%20de%20falar%20com%20voc%C3%AA%20sobre%20uma%20poss%C3%ADvel%20contrata%C3%A7%C3%A3o.%20Podemos%20conversar%3F" class="footer-email">michellycorrea@yahoo.com.br</a>
             </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Michelly Correa. Todos os direitos reservados.</p>
             <p><a href="/politica-de-privacidade/" class="footer-legal-link">Política de Privacidade</a></p>
-            <p class="developer-credits">Developed by <a href="https://www.conexus.press/" target="_blank" rel="noopener noreferrer"><img src="img/conexus-logo.png" alt="CONEXUS" class="conexus-logo" height="20" style="height: 20px; width: auto; max-width: 90px; vertical-align: middle; display: inline-block;"></a></p>
+            <p class="developer-credits">Developed by <a href="https://www.conexus.press/" target="_blank" rel="noopener noreferrer" rel="noopener noreferrer"><picture>
+                        <source srcset="img/conexus-logo.webp" type="image/webp">
+                        <img src="img/conexus-logo.png" alt="CONEXUS" class="conexus-logo" height="20" width="60" style="height: 20px; width: auto; max-width: 90px; vertical-align: middle; display: inline-block;" loading="lazy" decoding="async">
+                    </picture></a></p>
         </div>
     </footer>
 
