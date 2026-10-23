@@ -11,6 +11,38 @@
     
     <title>Michelly Correa | Apresentadora e Comunicadora em Curitiba</title>
     
+    <!-- Google Consent Mode v2 (Inicialização antecipada obrigatória) -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+
+        (function() {
+            var consentState = 'denied';
+            try {
+                if (localStorage.getItem('cookiesAccepted') === 'true') {
+                    consentState = 'granted';
+                }
+            } catch (e) {}
+
+            gtag('consent', 'default', {
+                'analytics_storage': consentState,
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+                'wait_for_update': 500
+            });
+        })();
+    </script>
+
+    <!-- Google Analytics 4 (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNHCWQBYQ3"></script>
+    <script>
+        gtag('js', new Date());
+        gtag('config', 'G-PNHCWQBYQ3', {
+            'send_page_view': true
+        });
+    </script>
+
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -676,7 +708,7 @@
         <img class="lightbox-content" id="lightbox-img" alt="Visualização ampliada da foto de Michelly Correa">
     </div>
 
-    <!-- Cookie Banner (LGPD) -->
+        <!-- Cookie Banner (LGPD) -->
     <div id="cookie-banner" class="cookie-banner">
         <div class="cookie-content">
             <p>Usamos cookies para garantir que você tenha a melhor experiência em nosso site. Ao continuar navegando, você concorda com a nossa política.</p>
@@ -685,54 +717,224 @@
     </div>
 
     <script>
-        // Cookie Logic
+        // Cookie Logic (LGPD) com integração Google Consent Mode v2
         const cookieBanner = document.getElementById('cookie-banner');
         const acceptCookiesBtn = document.getElementById('accept-cookies');
 
-        if (!localStorage.getItem('cookiesAccepted')) {
+        if (cookieBanner && !localStorage.getItem('cookiesAccepted')) {
             setTimeout(() => {
                 cookieBanner.classList.add('show');
-            }, 1000); // Mostra após 1 segundo
+            }, 1000);
         }
 
-        acceptCookiesBtn.addEventListener('click', () => {
-            localStorage.setItem('cookiesAccepted', 'true');
-            cookieBanner.classList.remove('show');
+        if (acceptCookiesBtn) {
+            acceptCookiesBtn.addEventListener('click', () => {
+                try {
+                    localStorage.setItem('cookiesAccepted', 'true');
+                } catch (e) {}
+                
+                // Atualiza o consentimento no GA4 exclusivamente para analytics_storage
+                if (typeof gtag === 'function') {
+                    gtag('consent', 'update', {
+                        'analytics_storage': 'granted'
+                    });
+                }
+                
+                if (cookieBanner) cookieBanner.classList.remove('show');
+            });
+        }
+
+        // ---------------------------------------------------------------------
+        // Google Analytics 4: Rastreamento Seguro de Conversões e Interações
+        // ---------------------------------------------------------------------
+        function sendAnalyticsEvent(eventName, eventParams) {
+            if (typeof gtag === 'function') {
+                gtag('event', eventName, eventParams);
+            }
+        }
+
+        // 1. Evento whatsapp_click (Todos os botões/links para WhatsApp)
+        // A. WhatsApp Flutuante
+        const waFloatBtn = document.querySelector('.whatsapp-float');
+        if (waFloatBtn) {
+            waFloatBtn.addEventListener('click', function() {
+                sendAnalyticsEvent('whatsapp_click', {
+                    'placement': 'floating_button',
+                    'page_path': window.location.pathname,
+                    'page_language': 'pt-BR'
+                });
+            });
+        }
+
+        // B. WhatsApp nos Cards de Serviços (com identificação do serviço)
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => {
+            const titleElem = card.querySelector('.service-title');
+            const serviceName = titleElem ? titleElem.textContent.trim() : 'Serviço';
+            const serviceLink = card.querySelector('.service-link');
+
+            if (serviceLink) {
+                serviceLink.addEventListener('click', function(e) {
+                    // Evita propagação para o card para não duplicar eventos
+                    e.stopPropagation();
+                    sendAnalyticsEvent('whatsapp_click', {
+                        'placement': 'service_card',
+                        'service_name': serviceName,
+                        'page_path': window.location.pathname,
+                        'page_language': 'pt-BR'
+                    });
+                });
+            }
+
+            // Clique na área do card de atuação profissional (service_click)
+            card.addEventListener('click', function(e) {
+                if (e.target.closest('.service-link')) return;
+                sendAnalyticsEvent('service_click', {
+                    'service_name': serviceName,
+                    'page_path': window.location.pathname,
+                    'page_language': 'pt-BR'
+                });
+            });
         });
 
-        // Lightbox Logic
+        // C. WhatsApp no Rodapé
+        const footerWaBtn = document.querySelector('.footer-contact .btn-primary');
+        if (footerWaBtn) {
+            footerWaBtn.addEventListener('click', function() {
+                sendAnalyticsEvent('whatsapp_click', {
+                    'placement': 'footer',
+                    'page_path': window.location.pathname,
+                    'page_language': 'pt-BR'
+                });
+            });
+        }
+
+        // 2. Evento email_click (Cliques em links mailto:)
+        document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+            link.addEventListener('click', function() {
+                const placement = this.closest('.footer') ? 'footer' : 'content';
+                sendAnalyticsEvent('email_click', {
+                    'placement': placement,
+                    'page_path': window.location.pathname,
+                    'page_language': 'pt-BR'
+                });
+            });
+        });
+
+        // 3. Evento phone_click (Cliques em links tel:, se existirem)
+        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+            link.addEventListener('click', function() {
+                const placement = this.closest('.footer') ? 'footer' : 'content';
+                sendAnalyticsEvent('phone_click', {
+                    'placement': placement,
+                    'page_path': window.location.pathname,
+                    'page_language': 'pt-BR'
+                });
+            });
+        });
+
+        // 4. Evento cta_click (Botões comerciais relevantes - sem duplicar com WhatsApp)
+        // Vídeo Globoplay
+        const videoLink = document.querySelector('.video-link');
+        const videoBtn = document.querySelector('.video-section .service-link');
+        [videoLink, videoBtn].forEach(el => {
+            if (el) {
+                el.addEventListener('click', function() {
+                    sendAnalyticsEvent('cta_click', {
+                        'button_text': 'Assistir no Globoplay',
+                        'placement': 'video_section',
+                        'page_path': window.location.pathname,
+                        'page_language': 'pt-BR'
+                    });
+                });
+            }
+        });
+
+        // CTA na página 404
+        const errorBtn = document.querySelector('.error-content .btn-primary');
+        if (errorBtn) {
+            errorBtn.addEventListener('click', function() {
+                sendAnalyticsEvent('cta_click', {
+                    'button_text': 'Voltar ao Início',
+                    'placement': 'error_404',
+                    'page_path': window.location.pathname,
+                    'page_language': 'pt-BR'
+                });
+            });
+        }
+
+        // 5. Evento form_submit (somente se houver formulário funcional e válido)
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                sendAnalyticsEvent('form_submit', {
+                    'button_id': this.id || 'contact_form',
+                    'placement': 'form_section',
+                    'page_path': window.location.pathname,
+                    'page_language': 'pt-BR'
+                });
+            });
+        });
+
+        // Lightbox Logic com acessibilidade por teclado (ESC e Enter)
         const lightbox = document.getElementById("gallery-lightbox");
         const lightboxImg = document.getElementById("lightbox-img");
         const galleryItems = document.querySelectorAll(".gallery-item");
 
         galleryItems.forEach(item => {
-            item.style.cursor = "pointer"; // Add pointer to images
-            item.addEventListener("click", function() {
-                lightbox.style.display = "flex";
-                lightboxImg.src = this.src;
+            item.style.cursor = "pointer";
+            item.setAttribute("tabindex", "0");
+            item.setAttribute("role", "button");
+            item.setAttribute("aria-label", "Ampliar foto da galeria");
+            
+            function openPhoto() {
+                if (lightbox && lightboxImg) {
+                    lightbox.style.display = "flex";
+                    lightboxImg.src = item.currentSrc || item.src;
+                    const closeBtn = document.getElementById("lightbox-close");
+                    if (closeBtn) closeBtn.focus();
+                }
+            }
+            
+            item.addEventListener("click", openPhoto);
+            item.addEventListener("keydown", function(e) {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    openPhoto();
+                }
             });
         });
 
         function closeLightbox() {
-            lightbox.style.display = "none";
+            if (lightbox) lightbox.style.display = "none";
         }
 
-        // Mobile Menu Logic
+        // Fechar lightbox via tecla ESC
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "Escape" && lightbox && lightbox.style.display === "flex") {
+                closeLightbox();
+            }
+        });
+
+        // Mobile Menu Logic com aria-expanded
         const hamburger = document.getElementById('hamburger-menu');
         const navMenuObj = document.getElementById('nav-menu');
         const navLinks = document.querySelectorAll('.nav-menu a');
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenuObj.classList.toggle('active');
-        });
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenuObj.classList.remove('active');
+        if (hamburger && navMenuObj) {
+            hamburger.addEventListener('click', () => {
+                const isActive = hamburger.classList.toggle('active');
+                navMenuObj.classList.toggle('active');
+                hamburger.setAttribute('aria-expanded', isActive ? 'true' : 'false');
             });
-        });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenuObj.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
 
         // Dark / Light Theme Toggle Logic — one button, one SVG at a time
         const themeToggleBtn = document.getElementById('theme-toggle');

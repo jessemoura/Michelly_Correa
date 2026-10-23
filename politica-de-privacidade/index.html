@@ -9,6 +9,38 @@
     
     <title>Política de Privacidade | Michelly Correa</title>
     
+    <!-- Google Consent Mode v2 (Inicialização antecipada obrigatória) -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+
+        (function() {
+            var consentState = 'denied';
+            try {
+                if (localStorage.getItem('cookiesAccepted') === 'true') {
+                    consentState = 'granted';
+                }
+            } catch (e) {}
+
+            gtag('consent', 'default', {
+                'analytics_storage': consentState,
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+                'wait_for_update': 500
+            });
+        })();
+    </script>
+
+    <!-- Google Analytics 4 (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNHCWQBYQ3"></script>
+    <script>
+        gtag('js', new Date());
+        gtag('config', 'G-PNHCWQBYQ3', {
+            'send_page_view': true
+        });
+    </script>
+
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
@@ -94,112 +126,17 @@
         .cookie-content button { width: 100%; }
     </style>
 
-    <!-- Anti-Flash Early Theme Detection Script -->
-        <script>
-        // Cookie Logic (LGPD)
-        const cookieBanner = document.getElementById('cookie-banner');
-        const acceptCookiesBtn = document.getElementById('accept-cookies');
-
-        if (cookieBanner && !localStorage.getItem('cookiesAccepted')) {
-            setTimeout(() => {
-                cookieBanner.classList.add('show');
-            }, 1000);
-        }
-
-        if (acceptCookiesBtn) {
-            acceptCookiesBtn.addEventListener('click', () => {
-                localStorage.setItem('cookiesAccepted', 'true');
-                if (cookieBanner) cookieBanner.classList.remove('show');
-            });
-        }
-
-        // Lightbox Logic com acessibilidade por teclado (ESC)
-        const lightbox = document.getElementById("gallery-lightbox");
-        const lightboxImg = document.getElementById("lightbox-img");
-        const galleryItems = document.querySelectorAll(".gallery-item");
-
-        galleryItems.forEach(item => {
-            item.style.cursor = "pointer";
-            item.setAttribute("tabindex", "0");
-            item.setAttribute("role", "button");
-            item.setAttribute("aria-label", "Ampliar foto da galeria");
-            
-            function openPhoto() {
-                if (lightbox && lightboxImg) {
-                    lightbox.style.display = "flex";
-                    // Se estiver em picture, pega o source ou o src do img
-                    lightboxImg.src = item.currentSrc || item.src;
-                    const closeBtn = document.getElementById("lightbox-close");
-                    if (closeBtn) closeBtn.focus();
-                }
+        <!-- Anti-Flash Early Theme Detection Script -->
+    <script>
+        (function() {
+            try {
+                var savedTheme = localStorage.getItem('theme');
+                var theme = savedTheme ? savedTheme : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', theme);
+            } catch(e) {
+                document.documentElement.setAttribute('data-theme', 'light');
             }
-            
-            item.addEventListener("click", openPhoto);
-            item.addEventListener("keydown", function(e) {
-                if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    openPhoto();
-                }
-            });
-        });
-
-        function closeLightbox() {
-            if (lightbox) lightbox.style.display = "none";
-        }
-
-        // Fechar lightbox via tecla ESC
-        document.addEventListener("keydown", function(e) {
-            if (e.key === "Escape" && lightbox && lightbox.style.display === "flex") {
-                closeLightbox();
-            }
-        });
-
-        // Mobile Menu Logic com aria-expanded
-        const hamburger = document.getElementById('hamburger-menu');
-        const navMenuObj = document.getElementById('nav-menu');
-        const navLinks = document.querySelectorAll('.nav-menu a');
-
-        if (hamburger && navMenuObj) {
-            hamburger.addEventListener('click', () => {
-                const isActive = hamburger.classList.toggle('active');
-                navMenuObj.classList.toggle('active');
-                hamburger.setAttribute('aria-expanded', isActive ? 'true' : 'false');
-            });
-
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    hamburger.classList.remove('active');
-                    navMenuObj.classList.remove('active');
-                    hamburger.setAttribute('aria-expanded', 'false');
-                });
-            });
-        }
-
-        // Dark / Light Theme Toggle Logic — one button, one SVG at a time
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-
-        const moonSvg = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>';
-        const sunSvg = '<circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>';
-
-        function syncThemeButton() {
-            if (!themeToggleBtn || !themeIcon) return;
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-            themeIcon.innerHTML = isDark ? sunSvg : moonSvg;
-            themeToggleBtn.setAttribute('aria-label', isDark ? 'Ativar modo claro' : 'Ativar modo escuro');
-        }
-
-        syncThemeButton();
-
-        if (themeToggleBtn) {
-            themeToggleBtn.addEventListener('click', function () {
-                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-                const nextTheme = isDark ? 'light' : 'dark';
-                document.documentElement.setAttribute('data-theme', nextTheme);
-                try { localStorage.setItem('theme', nextTheme); } catch (err) {}
-                syncThemeButton();
-            });
-        }
+        })();
     </script>
 </head>
 <body>
@@ -228,7 +165,7 @@
                     <span></span>
                 </button>
             </div>
-        <nav<nav class="nav-menu" id="nav-menu">
+        <nav class="nav-menu" id="nav-menu">
                 <ul>
                     <li><a href="/">HOME</a></li>
                     <li><a href="/#sobre">SOBRE</a></li>
@@ -256,7 +193,7 @@
     <main id="main-content" class="policy-section">
         <div class="container policy-content">
             <h1>Política de Privacidade</h1>
-            <p class="policy-last-updated">Última atualização: 27 de agosto de 2026</p>
+            <p class="policy-last-updated">Última atualização: 23 de outubro de 2026</p>
 
             <div class="policy-block">
                 <h2>1. Introdução</h2>
@@ -287,12 +224,13 @@
 
             <div class="policy-block">
                 <h2>4. Cookies e Armazenamento Local</h2>
-                <p>Para proporcionar uma experiência de navegação fluida, personalizada e agradável, utilizamos apenas recursos de armazenamento local (<em>localStorage</em>) em seu próprio navegador para guardar preferências essenciais da interface:</p>
+                <p>Para proporcionar uma experiência de navegação fluida, personalizada e segura, utilizamos tecnologias de armazenamento local e cookies estritamente necessários e analíticos:</p>
                 <ul>
-                    <li><strong>Preferência de Iluminação/Tema:</strong> Registramos a sua escolha de navegação entre o Modo Claro e o Modo Escuro (Dark/Light Mode), para que o tema permaneça ativo durante sua navegação.</li>
-                    <li><strong>Aceite do Aviso de Cookies:</strong> Armazenamos o seu aceite do aviso de cookies para que a barra informativa não volte a aparecer repetidamente a cada página visitada.</li>
+                    <li><strong>Preferência de Iluminação/Tema:</strong> Registramos a sua escolha de navegação entre o Modo Claro e o Modo Escuro (Dark/Light Mode) via <em>localStorage</em>, para que o tema permaneça ativo durante sua navegação.</li>
+                    <li><strong>Aceite do Aviso de Cookies (Consent Mode):</strong> Armazenamos o seu aceite do aviso de cookies via <em>localStorage</em> para que a barra informativa não volte a aparecer repetidamente.</li>
+                    <li><strong>Métricas Estatísticas Anônimas (Google Analytics 4):</strong> Mediante a sua autorização expressa no aviso de cookies, utilizamos o Google Analytics 4 (ID G-PNHCWQBYQ3) com suporte nativo ao <em>Google Consent Mode v2</em>. Esses cookies coletam dados estritamente agregados e anônimos (como páginas mais acessadas, tipo de dispositivo e tempo de visita), com mascaramento automático de endereço IP, sem identificação pessoal direta e sem ativação de cookies de publicidade direcionada.</li>
                 </ul>
-                <p>Você pode limpar o histórico e os dados armazenados em seu navegador a qualquer momento nas configurações do seu programa de navegação.</p>
+                <p>O consentimento analítico inicia por padrão como negado e só é ativado caso você clique em "ACEITAR" no aviso de cookies. Você pode limpar ou bloquear os cookies a qualquer momento nas configurações do seu navegador.</p>
             </div>
 
             <div class="policy-block">
@@ -303,9 +241,10 @@
 
             <div class="policy-block">
                 <h2>6. Serviços de Terceiros</h2>
-                <p>Para garantir a estética, tipografia e funcionamento do site, utilizamos bibliotecas e recursos externos confiáveis:</p>
+                <p>Para garantir a estética, tipografia, segurança e funcionamento do site, utilizamos bibliotecas e serviços externos confiáveis:</p>
                 <ul>
                     <li><strong>Google Fonts:</strong> Carregamento de fontes tipográficas otimizadas para leitura elegante e moderna.</li>
+                    <li><strong>Google Analytics 4 (Google LLC):</strong> Ferramenta de análise estatística de acessos e medição de desempenho institucional, operando em conformidade com o Google Consent Mode v2 e as diretrizes da LGPD.</li>
                 </ul>
             </div>
 
@@ -391,37 +330,249 @@
         </div>
     </div>
 
-
-
     <script>
-        // Mobile Menu Logic
+        // Cookie Logic (LGPD) com integração Google Consent Mode v2
+        const cookieBanner = document.getElementById('cookie-banner');
+        const acceptCookiesBtn = document.getElementById('accept-cookies');
+
+        if (cookieBanner && !localStorage.getItem('cookiesAccepted')) {
+            setTimeout(() => {
+                cookieBanner.classList.add('show');
+            }, 1000);
+        }
+
+        if (acceptCookiesBtn) {
+            acceptCookiesBtn.addEventListener('click', () => {
+                try {
+                    localStorage.setItem('cookiesAccepted', 'true');
+                } catch (e) {}
+                
+                // Atualiza o consentimento no GA4 exclusivamente para analytics_storage
+                if (typeof gtag === 'function') {
+                    gtag('consent', 'update', {
+                        'analytics_storage': 'granted'
+                    });
+                }
+                
+                if (cookieBanner) cookieBanner.classList.remove('show');
+            });
+        }
+
+        // ---------------------------------------------------------------------
+        // Google Analytics 4: Rastreamento Seguro de Conversões e Interações
+        // ---------------------------------------------------------------------
+        function sendAnalyticsEvent(eventName, eventParams) {
+            if (typeof gtag === 'function') {
+                gtag('event', eventName, eventParams);
+            }
+        }
+
+        // 1. Evento whatsapp_click (Todos os botões/links para WhatsApp)
+        // A. WhatsApp Flutuante
+        const waFloatBtn = document.querySelector('.whatsapp-float');
+        if (waFloatBtn) {
+            waFloatBtn.addEventListener('click', function() {
+                sendAnalyticsEvent('whatsapp_click', {
+                    'placement': 'floating_button',
+                    'page_path': window.location.pathname,
+                    'page_language': 'pt-BR'
+                });
+            });
+        }
+
+        // B. WhatsApp nos Cards de Serviços (com identificação do serviço)
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => {
+            const titleElem = card.querySelector('.service-title');
+            const serviceName = titleElem ? titleElem.textContent.trim() : 'Serviço';
+            const serviceLink = card.querySelector('.service-link');
+
+            if (serviceLink) {
+                serviceLink.addEventListener('click', function(e) {
+                    // Evita propagação para o card para não duplicar eventos
+                    e.stopPropagation();
+                    sendAnalyticsEvent('whatsapp_click', {
+                        'placement': 'service_card',
+                        'service_name': serviceName,
+                        'page_path': window.location.pathname,
+                        'page_language': 'pt-BR'
+                    });
+                });
+            }
+
+            // Clique na área do card de atuação profissional (service_click)
+            card.addEventListener('click', function(e) {
+                if (e.target.closest('.service-link')) return;
+                sendAnalyticsEvent('service_click', {
+                    'service_name': serviceName,
+                    'page_path': window.location.pathname,
+                    'page_language': 'pt-BR'
+                });
+            });
+        });
+
+        // C. WhatsApp no Rodapé
+        const footerWaBtn = document.querySelector('.footer-contact .btn-primary');
+        if (footerWaBtn) {
+            footerWaBtn.addEventListener('click', function() {
+                sendAnalyticsEvent('whatsapp_click', {
+                    'placement': 'footer',
+                    'page_path': window.location.pathname,
+                    'page_language': 'pt-BR'
+                });
+            });
+        }
+
+        // 2. Evento email_click (Cliques em links mailto:)
+        document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+            link.addEventListener('click', function() {
+                const placement = this.closest('.footer') ? 'footer' : 'content';
+                sendAnalyticsEvent('email_click', {
+                    'placement': placement,
+                    'page_path': window.location.pathname,
+                    'page_language': 'pt-BR'
+                });
+            });
+        });
+
+        // 3. Evento phone_click (Cliques em links tel:, se existirem)
+        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+            link.addEventListener('click', function() {
+                const placement = this.closest('.footer') ? 'footer' : 'content';
+                sendAnalyticsEvent('phone_click', {
+                    'placement': placement,
+                    'page_path': window.location.pathname,
+                    'page_language': 'pt-BR'
+                });
+            });
+        });
+
+        // 4. Evento cta_click (Botões comerciais relevantes - sem duplicar com WhatsApp)
+        // Vídeo Globoplay
+        const videoLink = document.querySelector('.video-link');
+        const videoBtn = document.querySelector('.video-section .service-link');
+        [videoLink, videoBtn].forEach(el => {
+            if (el) {
+                el.addEventListener('click', function() {
+                    sendAnalyticsEvent('cta_click', {
+                        'button_text': 'Assistir no Globoplay',
+                        'placement': 'video_section',
+                        'page_path': window.location.pathname,
+                        'page_language': 'pt-BR'
+                    });
+                });
+            }
+        });
+
+        // CTA na página 404
+        const errorBtn = document.querySelector('.error-content .btn-primary');
+        if (errorBtn) {
+            errorBtn.addEventListener('click', function() {
+                sendAnalyticsEvent('cta_click', {
+                    'button_text': 'Voltar ao Início',
+                    'placement': 'error_404',
+                    'page_path': window.location.pathname,
+                    'page_language': 'pt-BR'
+                });
+            });
+        }
+
+        // 5. Evento form_submit (somente se houver formulário funcional e válido)
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                sendAnalyticsEvent('form_submit', {
+                    'button_id': this.id || 'contact_form',
+                    'placement': 'form_section',
+                    'page_path': window.location.pathname,
+                    'page_language': 'pt-BR'
+                });
+            });
+        });
+
+        // Lightbox Logic com acessibilidade por teclado (ESC e Enter)
+        const lightbox = document.getElementById("gallery-lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const galleryItems = document.querySelectorAll(".gallery-item");
+
+        galleryItems.forEach(item => {
+            item.style.cursor = "pointer";
+            item.setAttribute("tabindex", "0");
+            item.setAttribute("role", "button");
+            item.setAttribute("aria-label", "Ampliar foto da galeria");
+            
+            function openPhoto() {
+                if (lightbox && lightboxImg) {
+                    lightbox.style.display = "flex";
+                    lightboxImg.src = item.currentSrc || item.src;
+                    const closeBtn = document.getElementById("lightbox-close");
+                    if (closeBtn) closeBtn.focus();
+                }
+            }
+            
+            item.addEventListener("click", openPhoto);
+            item.addEventListener("keydown", function(e) {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    openPhoto();
+                }
+            });
+        });
+
+        function closeLightbox() {
+            if (lightbox) lightbox.style.display = "none";
+        }
+
+        // Fechar lightbox via tecla ESC
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "Escape" && lightbox && lightbox.style.display === "flex") {
+                closeLightbox();
+            }
+        });
+
+        // Mobile Menu Logic com aria-expanded
         const hamburger = document.getElementById('hamburger-menu');
         const navMenuObj = document.getElementById('nav-menu');
         const navLinks = document.querySelectorAll('.nav-menu a');
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenuObj.classList.toggle('active');
-        });
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenuObj.classList.remove('active');
+        if (hamburger && navMenuObj) {
+            hamburger.addEventListener('click', () => {
+                const isActive = hamburger.classList.toggle('active');
+                navMenuObj.classList.toggle('active');
+                hamburger.setAttribute('aria-expanded', isActive ? 'true' : 'false');
             });
-        });
 
-        // Dark / Light Theme Toggle Logic
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenuObj.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+
+        // Dark / Light Theme Toggle Logic — one button, one SVG at a time
         const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        const moonSvg = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>';
+        const sunSvg = '<circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>';
+
+        function syncThemeButton() {
+            if (!themeToggleBtn || !themeIcon) return;
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            themeIcon.innerHTML = isDark ? sunSvg : moonSvg;
+            themeToggleBtn.setAttribute('aria-label', isDark ? 'Ativar modo claro' : 'Ativar modo escuro');
+        }
+
+        syncThemeButton();
+
         if (themeToggleBtn) {
-            themeToggleBtn.addEventListener('click', function(e) {
-                e.preventDefault();
+            themeToggleBtn.addEventListener('click', function () {
                 const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
                 const nextTheme = isDark ? 'light' : 'dark';
                 document.documentElement.setAttribute('data-theme', nextTheme);
-                try {
-                    localStorage.setItem('theme', nextTheme);
-                } catch (err) {}
+                try { localStorage.setItem('theme', nextTheme); } catch (err) {}
+                syncThemeButton();
             });
         }
     </script>
